@@ -15,8 +15,7 @@
     "store",
     "hooks"
   ],
-  "author": "Alexander Pataridze <s@qwerty.ge> (https://qwerty.ge)",
-  "license": "MIT",
+  
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
@@ -34,6 +33,5 @@
   },
   "eslintConfig": {
     "extends": "universe/native"
-  },
-  "private": true
+  }
 }
