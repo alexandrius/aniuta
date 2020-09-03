@@ -12,7 +12,7 @@ yarn add aniuta
 
 ```jsx
 import React, { useState } from 'react';
-import { Provider, useStore } from 'aniuta';
+import { Provider, initStore } from 'aniuta';
 
 const useCounter = initStore(() => {
    const [count, setCount] = useState(0);
