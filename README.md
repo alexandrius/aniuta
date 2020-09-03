@@ -43,10 +43,11 @@ function Counter() {
 Aniuta is THE simplest state manager for Expo and React Native.
 
 ##### `<Provider>`
+Just wrap App with Provider component and you are good to go
 
 ```jsx
 render(
-   <Provider stores={[counterStore]}>
+   <Provider>
       <Counter />
    </Provider>
 );
