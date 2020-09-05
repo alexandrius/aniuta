@@ -13,6 +13,7 @@ yarn add aniuta
 ```jsx
 import React, { useState } from 'react';
 import { Provider, createStore } from 'aniuta';
+import { View, Text, Button } from 'react-native';
 
 //useCounter.js. Store function needs to have unique store name
 const useCounter = createStore(function CounterStore() {
@@ -42,14 +43,16 @@ function Counter() {
 //Just wrap App with Provider component and you are good to go
 export default function App() {
    return (
-      <Provider>
-         <Counter />
-      </Provider>
+      <View>
+         <Provider>
+            <Counter />
+         </Provider>
+      </View>
    );
 }
 ```
-> See more examples in ./example folder
 
+> See more examples in ./example folder
 
 ## Based On
 
