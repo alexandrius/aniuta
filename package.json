@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "license": "MIT",
   "files": [
-    "lib",
-    "example"
+    "lib"
   ],
   "keywords": [
     "expo",
