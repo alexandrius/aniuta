@@ -57,8 +57,8 @@ export default function App() {
 > See more examples in ./example folder
 
 ### Don't
-> ❌ Do not create single store for all data. Create as many stores for different purposes. Multiple stores will prevent unnessesary re-renders
-> ❌ Do not use store hook in another store. If you need to have a hook with 2 store data create additional hook:
+- ❌ Do not create single store for all data. Create as many stores for different purposes. Multiple stores will prevent unnessesary re-renders
+- ❌ Do not use store hook in another store. If you need to have a hook with 2 store data create additional hook:
 
 For sake of this example lets say we have 2 separate count stores first works for odds and second for Evens.
 
