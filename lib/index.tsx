@@ -39,7 +39,6 @@ export const Provider = ({ children }) => {
 export function useStore(storeInit) {
    // use store specific context
    const map: Map<string, Function> = useContext(contextMap[storeInit.name]);
-   console.log(map);
 
    // complain if no map is given
    if (!map) {
