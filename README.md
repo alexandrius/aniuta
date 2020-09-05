@@ -17,15 +17,18 @@ import React, { useState } from 'react';
 import { Provider, createStore } from 'aniuta';
 import { View, Text, Button } from 'react-native';
 
-//useCounter.js. Store function needs to have unique store name
-const useCounter = createStore(function CounterStore() {
-   const [count, setCount] = useState(0);
+//useCounter.js. Name should be unique
+const useCounter = createStore({
+   name: 'CounterStore',
+   Store: () => {
+      const [count, setCount] = useState(0);
 
-   const increment = () => setCount(count + 1);
-   const decrement = () => setCount(count - 1);
-   const reset = () => setCount(0);
+      const increment = () => setCount(count + 1);
+      const decrement = () => setCount(count - 1);
+      const reset = () => setCount(0);
 
-   return { count, increment, decrement, reset };
+      return { count, increment, decrement, reset };
+   },
 });
 
 //counter.js - Counter Component
@@ -57,28 +60,35 @@ export default function App() {
 > See more examples in ./example folder
 
 ### Don't
-- ❌ Do not create single store for all data. Create as many stores for different purposes. Multiple stores will prevent unnessesary re-renders
-- ❌ Do not use store hook in another store. If you need to have a hook with 2 store data create additional hook:
+
+-  ❌ Do not create single store for all data. Create as many stores for different purposes. Multiple stores will prevent unnessesary re-renders
+-  ❌ Do not use store hook in another store. If you need to have a hook with 2 store data create additional hook:
 
 For sake of this example lets say we have 2 separate count stores. First for Odd numbers and second for Even numbers.
 
 ```javascript
-const useOdds = createStore(function OddsStore() {
-   const [count, setCount] = useState(1);
+const useOdds = createStore({
+   name: 'OddsStore',
+   Store: () => {
+      const [count, setCount] = useState(1);
 
-   const increment = () => setCount(count + 2);
-   const decrement = () => setCount(count - 2);
+      const increment = () => setCount(count + 2);
+      const decrement = () => setCount(count - 2);
 
-   return { count, increment, decrement };
+      return { count, increment, decrement };
+   },
 });
 
-const useEvens = createStore(function EvensStore() {
-   const [count, setCount] = useState(0);
+const useEvens = createStore({
+   name: 'EvensStore',
+   Store: () => {
+      const [count, setCount] = useState(0);
 
-   const increment = () => setCount(count + 2);
-   const decrement = () => setCount(count - 2);
+      const increment = () => setCount(count + 2);
+      const decrement = () => setCount(count - 2);
 
-   return { count, increment, decrement };
+      return { count, increment, decrement };
+   },
 });
 ```
 
