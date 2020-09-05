@@ -1,7 +1,7 @@
 import { createStore } from 'aniuta';
 import { useState } from 'react';
 
-const useCounter = createStore(function CounterStore() {
+function CounterStore() {
    const [count, setCount] = useState(0);
 
    const increment = () => setCount(count + 1);
@@ -9,6 +9,6 @@ const useCounter = createStore(function CounterStore() {
    const reset = () => setCount(0);
 
    return { count, increment, decrement, reset };
-});
+}
 
-export default useCounter;
+export default createStore(CounterStore);

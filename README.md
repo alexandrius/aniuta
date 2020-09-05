@@ -56,6 +56,46 @@ export default function App() {
 
 > See more examples in ./example folder
 
+### Don't
+> ❌ Do not create single store for all data. Create as many stores for different purposes. Multiple stores will prevent unnessesary re-renders
+> ❌ Do not use store hook in another store. If you need to have a hook with 2 store data create additional hook:
+
+For sake of this example lets say we have 2 separate count stores first works for odds and second for Evens.
+
+```javascript
+const useOdds = createStore(function OddsStore() {
+   const [count, setCount] = useState(1);
+
+   const increment = () => setCount(count + 2);
+   const decrement = () => setCount(count - 2);
+
+   return { count, increment, decrement };
+});
+
+const useEvens = createStore(function EvensStore() {
+   const [count, setCount] = useState(0);
+
+   const increment = () => setCount(count + 2);
+   const decrement = () => setCount(count - 2);
+
+   return { count, increment, decrement };
+});
+```
+
+Create third wrapper hook which can be used inside component:
+
+```javascript
+function useOddsAndEvens() {
+   const odds = useOdds();
+   const evens = useEvens();
+
+   return {
+      odds,
+      evens,
+   };
+}
+```
+
 ## Based On
 
 -  [Outstated](https://github.com/yamalight/outstated)

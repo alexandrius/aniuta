@@ -25,10 +25,10 @@ export const Provider = ({ children }) => {
    // create providers for each store
    let providersLayout;
 
-   stores.forEach((store) => {
+   stores.forEach((store: Function) => {
       let context = contextMap[store.name];
       if (!context) {
-         context = createContext();
+         context = createContext(null);
          contextMap[store.name] = context;
       }
       providersLayout = <Container store={store}>{providersLayout || children}</Container>;
@@ -38,7 +38,8 @@ export const Provider = ({ children }) => {
 
 export function useStore(storeInit) {
    // use store specific context
-   const map = useContext(contextMap[storeInit.name]);
+   const map: Map<string, Function> = useContext(contextMap[storeInit.name]);
+   console.log(map);
 
    // complain if no map is given
    if (!map) {
