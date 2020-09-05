@@ -8,13 +8,14 @@
 yarn add aniuta
 ```
 
-## Example
+## Usage
 
 ```jsx
 import React, { useState } from 'react';
-import { Provider, initStore } from 'aniuta';
+import { Provider, createStore } from 'aniuta';
 
-const useCounter = initStore(() => {
+//useCounter.js. Store function needs to have unique store name
+const useCounter = createStore(function CounterStore() {
    const [count, setCount] = useState(0);
 
    const increment = () => setCount(count + 1);
@@ -24,6 +25,7 @@ const useCounter = initStore(() => {
    return { count, increment, decrement, reset };
 });
 
+//counter.js - Counter Component
 function Counter() {
    const { count, increment, decrement, reset } = useCounter();
 
@@ -36,22 +38,18 @@ function Counter() {
       </View>
    );
 }
+
+//Just wrap App with Provider component and you are good to go
+export default function App() {
+   return (
+      <Provider>
+         <Counter />
+      </Provider>
+   );
+}
 ```
+> See more examples in ./example folder
 
-### Introducing Aniuta
-
-Aniuta is THE simplest state manager for Expo and React Native.
-
-##### `<Provider>`
-Just wrap App with Provider component and you are good to go
-
-```jsx
-render(
-   <Provider>
-      <Counter />
-   </Provider>
-);
-```
 
 ## Based On
 

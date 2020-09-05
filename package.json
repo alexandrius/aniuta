@@ -1,10 +1,12 @@
 {
   "name": "aniuta",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "The simplest state manager for Expo and React Native",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "license": "MIT",
   "files": [
-    "src"
+    "lib",
+    "example"
   ],
   "keywords": [
     "expo",
@@ -15,7 +17,6 @@
     "store",
     "hooks"
   ],
-  
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
@@ -28,8 +29,7 @@
   },
   "peerDependencies": {
     "react": ">=16.8.6",
-    "react-native": ">=0.60",
-    "react-native-webview": ">=7.0.0"
+    "react-native": ">=0.60"
   },
   "eslintConfig": {
     "extends": "universe/native"
