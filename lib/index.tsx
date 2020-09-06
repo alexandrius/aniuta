@@ -45,7 +45,7 @@ export const Provider = ({ children }) => {
    return providersLayout;
 };
 
-export function useStore(storeName) {
+export const useStore = (storeName: string) => {
    // use store specific context
    const map: Map<string, Function> = useContext(contextMap[storeName]);
 
