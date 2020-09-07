@@ -1,11 +1,11 @@
 {
   "name": "aniuta",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "The simplest state manager for Expo and React Native",
-  "main": "lib/index.tsx",
+  "main": "src/index.tsx",
   "license": "MIT",
   "files": [
-    "lib"
+    "src"
   ],
   "keywords": [
     "expo",

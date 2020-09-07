@@ -45,7 +45,7 @@ export const Provider = ({ children }) => {
    return providersLayout;
 };
 
-export const useStore = (storeName: string) => {
+function useStore(storeName: string){
    // use store specific context
    const map: Map<string, Function> = useContext(contextMap[storeName]);
 
@@ -56,9 +56,9 @@ export const useStore = (storeName: string) => {
 
    const instance = map.get(storeName);
    return instance;
-}
+};
 
-export const createStore = (storeInit: StoreInit) => {
+export function createStore(storeInit: StoreInit) {
    storesMap[storeInit.name] = storeInit;
    return () => useStore(storeInit.name);
-};
+}
