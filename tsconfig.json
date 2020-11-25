@@ -1,16 +1,19 @@
 {
    "include": ["src"],
-   "exclude": ["example", "dist", "node_modules"],
+   "exclude": ["example"],
    "compilerOptions": {
+      "target": "ES2015",
+      "module": "es2015",
       "jsx": "react",
+      "outDir": "lib",
+      "declaration": true,
       "declarationMap": true,
       "skipLibCheck": true,
-      "target": "es5",
-      "module": "commonjs",
-      "lib": ["es2017", "es7", "es6", "dom"],
-      "declaration": true,
-      "outDir": "dist",
       "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
       "esModuleInterop": true
    }
 }
