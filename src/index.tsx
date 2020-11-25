@@ -1,40 +1,49 @@
-import React, { createContext, useContext } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React, { Context, createContext, useContext } from 'react';
 
-// Create stores map for global store assignment
-const storesMap = {};
-// Create context map for global store assignment
-const contextMap = {};
-
-interface StoreInit {
+interface IStore {
    name: string;
    Store: Function;
 }
+interface IContainer {
+   name: string;
+   children: JSX.Element;
+   store: Function;
+}
+interface IProvider {
+   children: JSX.Element;
+}
 
-const Container = ({ store, name, children }) => {
+// Create stores map for global store assignment
+const storesMap = new Map<string, IStore>();
+// Create context map for global store assignment
+const contextMap = new Map<string, Context<any>>();
+
+const Container = ({ store, name, children }: IContainer) => {
    // initialize store hooks
    // this is required because react expects the same number
    // of hooks to be called on each render
    // so if we run init in useStore hook - it'll break on re-render
    // return provider with stores map
-   const storesMap = new Map([[name, store()]]);
+   const storeMap = new Map([[name, store()]]);
 
    // get context for specific store
-   const Context = contextMap[name];
-   return <Context.Provider value={storesMap}>{children}</Context.Provider>;
+   const Context = contextMap.get(name);
+   if (Context) return <Context.Provider value={storeMap}>{children}</Context.Provider>;
+   return null;
 };
 
-export const Provider = ({ children }) => {
-   const stores = Object.values(storesMap);
-   if (!stores.length) return children;
+export const Provider = ({ children }: IProvider) => {
+   if (!storesMap.size) return children;
 
    // create providers for each store
-   let providersLayout;
+   let providersLayout: JSX.Element | undefined;
 
-   stores.forEach(({ Store, name }: StoreInit) => {
-      let context = contextMap[name];
+   storesMap.forEach(({ Store, name }: IStore) => {
+      let context = contextMap.get(name);
       if (!context) {
          context = createContext(null);
-         contextMap[name] = context;
+         contextMap.set(name, context);
       }
       providersLayout = (
          <Container name={name} store={Store}>
@@ -42,12 +51,20 @@ export const Provider = ({ children }) => {
          </Container>
       );
    });
+   if (!providersLayout) return null;
+
    return providersLayout;
 };
 
-function useStore(storeName: string){
+function useStore(storeName: string) {
+   const context = contextMap.get(storeName);
+
+   //complain if context is not initialized
+   if (!context) {
+      throw new Error('Context was not initialized');
+   }
    // use store specific context
-   const map: Map<string, Function> = useContext(contextMap[storeName]);
+   const map: Map<string, Function> = useContext(context);
 
    // complain if no map is given
    if (!map) {
@@ -56,9 +73,9 @@ function useStore(storeName: string){
 
    const instance = map.get(storeName);
    return instance;
-};
+}
 
-export function createStore(storeInit: StoreInit) {
-   storesMap[storeInit.name] = storeInit;
+export function createStore(storeInit: IStore) {
+   storesMap.set(storeInit.name, storeInit);
    return () => useStore(storeInit.name);
 }
