@@ -20,16 +20,9 @@ const storesMap = new Map<string, IStore>();
 const contextMap = new Map<string, Context<any>>();
 
 const Container = ({ store, name, children }: IContainer) => {
-   // initialize store hooks
-   // this is required because react expects the same number
-   // of hooks to be called on each render
-   // so if we run init in useStore hook - it'll break on re-render
-   // return provider with stores map
-   const storeMap = new Map([[name, store()]]);
-
    // get context for specific store
    const Context = contextMap.get(name);
-   if (Context) return <Context.Provider value={storeMap}>{children}</Context.Provider>;
+   if (Context) return <Context.Provider value={store()}>{children}</Context.Provider>;
    return null;
 };
 
@@ -63,16 +56,7 @@ function useStore(storeName: string) {
    if (!context) {
       throw new Error('Context was not initialized');
    }
-   // use store specific context
-   const map: Map<string, Function> = useContext(context);
-
-   // complain if no map is given
-   if (!map) {
-      throw new Error('You must wrap your components with a <Provider>!');
-   }
-
-   const instance = map.get(storeName);
-   return instance;
+   return useContext(context);
 }
 
 export function createStore(storeInit: IStore) {
