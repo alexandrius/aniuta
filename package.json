@@ -1,6 +1,6 @@
 {
   "name": "aniuta",
-  "version": "0.4.0-next.0",
+  "version": "0.4.1",
   "description": "The simplest state manager for Expo and React Native",
   "author": "Alexander Pataridze",
   "source": "src/index.tsx",
