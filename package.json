@@ -1,6 +1,6 @@
 {
   "name": "aniuta",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "The simplest state manager for Expo and React Native",
   "author": "Alexander Pataridze",
   "source": "src/index.tsx",
@@ -27,7 +27,7 @@
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.8.2",
+    "@typescript-eslint/parser": "^4.26.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-expo": "^8.3.0",
     "eslint": "^7.27.0",
