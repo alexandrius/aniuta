@@ -6,9 +6,16 @@
 
 ## Installation
 
+Use `yarn`
 ```sh
 yarn add aniuta
 ```
+
+or `npm`
+```sh
+npm i -S aniuta
+```
+
 
 ## Usage
 
@@ -61,8 +68,8 @@ export default function App() {
 
 ### Don't
 
--  ❌ Do not create single store for all data. Create as many stores for different purposes. Multiple stores will prevent unnessesary re-renders
--  ❌ Do not use store hook in another store. If you need to have a hook with 2 store data create additional hook:
+-  ❌ Do not create single store for all data. Create store as many stores as needed. Multiple stores will prevent unnessesary re-renders
+-  ❌ Do not `useStore` hook inside another store. If you need to have a hook with 2 store data create additional hook:
 
 For sake of this example lets say we have 2 separate count stores. First for Odd numbers and second for Even numbers.
 
