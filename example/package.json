@@ -9,15 +9,13 @@
   },
   "dependencies": {
     "aniuta": "../",
-    "expo": "^39.0.0",
+    "expo": "^42.0.3",
     "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
-    "react-native-web": "~0.13.7"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "babel-preset-expo": "^8.3.0"
+    "@babel/core": "~7.15.5",
+    "babel-preset-expo": "8.4.1"
   },
   "private": true
 }

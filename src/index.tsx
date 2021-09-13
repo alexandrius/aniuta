@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useImperativeHandle, useState } from 'react';
 
 interface IStore {
-   name: string;
-   Store: Function;
+   key: string;
+   store: Function;
 }
 interface IContainer {
    name: string;
@@ -33,7 +33,7 @@ const Container = React.forwardRef(({ name, children }: IContainer, ref: any) =>
    //get specific store
    const storeInit = storesMap.get(name);
    if (Context && storeInit)
-      return <Context.Provider value={storeInit.Store()}>{children}</Context.Provider>;
+      return <Context.Provider value={storeInit.store()}>{children}</Context.Provider>;
    return null;
 });
 
@@ -43,22 +43,22 @@ export const Provider = ({ children }: IProvider) => {
    // create providers for each store
    let providersLayout: JSX.Element | undefined;
 
-   storesMap.forEach(({ name }: IStore) => {
-      let context = contextMap.get(name);
-      let ref = containerMap.get(name);
+   storesMap.forEach(({ key }: IStore) => {
+      let context = contextMap.get(key);
+      let ref = containerMap.get(key);
 
       if (!ref) {
          ref = React.createRef();
       }
-      containerMap.set(name, ref);
+      containerMap.set(key, ref);
 
       if (!context) {
          context = createContext(null);
-         contextMap.set(name, context);
+         contextMap.set(key, context);
       }
 
       providersLayout = (
-         <Container ref={ref} name={name}>
+         <Container ref={ref} name={key}>
             {providersLayout || children}
          </Container>
       );
@@ -79,9 +79,9 @@ function useStore(storeName: string) {
 }
 
 export function createStore(storeInit: IStore) {
-   storesMap.set(storeInit.name, storeInit);
+   storesMap.set(storeInit.key, storeInit);
 
    //Force redraw after state change
-   containerMap.get(storeInit.name)?.current?.redraw();
-   return () => useStore(storeInit.name);
+   containerMap.get(storeInit.key)?.current?.redraw();
+   return () => useStore(storeInit.key);
 }

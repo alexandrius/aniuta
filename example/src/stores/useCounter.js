@@ -2,8 +2,8 @@ import { createStore } from 'aniuta';
 import { useState } from 'react';
 
 export default createStore({
-   name: 'CounterStore',
-   Store: () => {
+   key: 'CounterStore',
+   store: () => {
       const [count, setCount] = useState(0);
 
       const increment = () => setCount(count + 1);
