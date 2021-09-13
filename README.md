@@ -26,8 +26,8 @@ import { View, Text, Button } from 'react-native';
 
 //useCounter.js. Name should be unique
 const useCounter = createStore({
-   name: 'CounterStore',
-   Store: () => {
+   key: 'CounterStore',
+   store: () => {
       const [count, setCount] = useState(0);
 
       const increment = () => setCount(count + 1);
@@ -75,8 +75,8 @@ For sake of this example lets say we have 2 separate count stores. First for Odd
 
 ```javascript
 const useOdds = createStore({
-   name: 'OddsStore',
-   Store: () => {
+   key: 'OddsStore',
+   store: () => {
       const [count, setCount] = useState(1);
 
       const increment = () => setCount(count + 2);
@@ -87,8 +87,8 @@ const useOdds = createStore({
 });
 
 const useEvens = createStore({
-   name: 'EvensStore',
-   Store: () => {
+   key: 'EvensStore',
+   store: () => {
       const [count, setCount] = useState(0);
 
       const increment = () => setCount(count + 2);
