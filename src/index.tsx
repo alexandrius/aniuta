@@ -2,7 +2,7 @@ import React, { createContext, useContext, useImperativeHandle, useState } from 
 
 interface IStore {
    key: string;
-   store: Function;
+   Store: Function;
 }
 interface IContainer {
    name: string;
@@ -33,7 +33,7 @@ const Container = React.forwardRef(({ name, children }: IContainer, ref: any) =>
    //get specific store
    const storeInit = storesMap.get(name);
    if (Context && storeInit)
-      return <Context.Provider value={storeInit.store()}>{children}</Context.Provider>;
+      return <Context.Provider value={storeInit.Store()}>{children}</Context.Provider>;
    return null;
 });
 
