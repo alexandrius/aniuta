@@ -9,6 +9,11 @@
   "unpkg": "dist/index.umd.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4TWIGGERS/aniuta"
+  },
+  "homepage": "https://4twiggers.com/",
   "scripts": {
     "build": "tsc"
   },
