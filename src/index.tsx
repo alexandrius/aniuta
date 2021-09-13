@@ -2,6 +2,7 @@ import React, { createContext, useContext, useImperativeHandle, useState } from 
 
 interface IStore {
    key: string;
+   name: string;
    Store: Function;
 }
 interface IContainer {
@@ -79,6 +80,11 @@ function useStore(storeName: string) {
 }
 
 export function createStore(storeInit: IStore) {
+   if (storeInit.name) {
+      console.warn('`name` key is deprecated please use `key` instead');
+      storeInit.key = storeInit.name;
+   }
+
    storesMap.set(storeInit.key, storeInit);
 
    //Force redraw after state change
