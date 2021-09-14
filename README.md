@@ -24,7 +24,7 @@ import React, { useState } from 'react';
 import { Provider, createStore } from 'aniuta';
 import { View, Text, Button } from 'react-native';
 
-//useCounter.js. key should be unique
+//useCounter.js. key must be unique
 const useCounter = createStore({
    key: 'CounterStore',
    Store: () => {
