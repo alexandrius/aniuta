@@ -24,7 +24,7 @@ import React, { useState } from 'react';
 import { Provider, createStore } from 'aniuta';
 import { View, Text, Button } from 'react-native';
 
-//useCounter.js. Name should be unique
+//useCounter.js. key should be unique
 const useCounter = createStore({
    key: 'CounterStore',
    Store: () => {
@@ -66,10 +66,18 @@ export default function App() {
 
 > See more examples in ./example folder
 
-### Don't
+### Tips
 
--  ❌ Do not create single store for all data. Create store as many stores as needed. Multiple stores will prevent unnessesary re-renders
--  ❌ Do not use store hook inside another store. If you need to have a hook with 2 store data create additional hook:
+❌ Do not create single store for everything.
+
+✅ Create store as many stores as needed. Multiple stores will prevent unnessesary re-renders
+
+
+<br/>
+
+❌ Do not use store hook inside another store.
+
+✅ If you need to have a hook with 2 store data create additional hook. See below.
 
 For sake of this example lets say we have 2 separate count stores. First for Odd numbers and second for Even numbers.
 
