@@ -2,7 +2,7 @@
 
 > The simplest state manager for Expo and React Native
 
-![Aniuta logo](https://raw.githubusercontent.com/qwertydevelopment/aniuta/master/aniuta.png)
+![Aniuta logo](https://raw.githubusercontent.com/4twigers/aniuta/master/aniuta.png)
 
 ## Installation
 
