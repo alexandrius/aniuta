@@ -1,3 +1,5 @@
+## This library will no longer be maintained. Please consider `Zustand`, `Valtio`, `Recoil` or `Jotai` instead
+
 # Aniuta
 
 > The simplest state manager for Expo and React Native
